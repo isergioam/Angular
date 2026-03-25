@@ -1,0 +1,17 @@
+.contenedor {
+  width:80%;
+  margin:40pxauto;
+  padding:20px;
+  border:1pxsolid #ccc;
+  border-radius:10px;
+  font-family:Arial,sans-serif;
+  text-align:center;
+}
+
+h1 {
+  color: #1d4ed8;
+}
+
+p {
+  font-size:18px;
+}
