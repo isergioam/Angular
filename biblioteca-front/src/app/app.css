@@ -1,17 +1,32 @@
 .contenedor {
-  width:80%;
-  margin:40pxauto;
-  padding:20px;
-  border:1pxsolid #ccc;
-  border-radius:10px;
-  font-family:Arial,sans-serif;
-  text-align:center;
+  background: #d81d1d;
+  height: 25vw;
+  padding: 10px;
+  /*border:1pxsolid #ccc;*/
+  /*border-radius:10px;*/
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
-h1 {
+.contenedor2 {
+  background: #ffd900;
+  height: 35vw;
+  padding: 10px;
+  /*border:1pxsolid #ccc;*/
+  /*border-radius:10px;*/
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1,
+h2 {
   color: #1d4ed8;
 }
 
+ul {
+  list-style: none;
+}
+
 p {
-  font-size:18px;
+  font-size: 18px;
 }
