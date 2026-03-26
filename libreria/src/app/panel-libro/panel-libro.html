@@ -1,0 +1,17 @@
+<div class="panel-libro">
+  <h2 class="titulo">{{ titulo }}</h2>
+  <p class="autor">Por {{ autor }}</p>
+  <p class="descripcion">
+    {{ descripcion }}   
+  </p>
+  <p class="stock">
+    Stock: <span class="cantidad">{{ stock }}</span>
+  </p>
+  <div class="acciones">
+    <button (click)="comprobarStock()" [disabled]="!disponibilidad" class="btn-primarys">Reservar libro</button>
+    
+     <span class="msj-disponibilidad">
+      {{ msjDisponibilidad }}
+     </span>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="semaforo-panel">
+  <h2 class="titulo">Semáforo</h2>
+  <button class="btn-semaforo" [ngClass]="estadoSemaforo" (click)="cambiarSemaforo()"></button>
+  <p class="estado-texto">Estado: <span class="estado-actual">{{ estadoSemaforo | uppercase }}</span></p>
+</div>

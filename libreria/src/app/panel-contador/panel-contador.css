@@ -1,0 +1,126 @@
+/* PANEL CONTADOR */
+.panel-contador {
+  background: linear-gradient(185deg, #ffffff 0%, #f1f6ff 100%);
+  border-radius: 20px;
+  padding: 28px;
+  width: 92vw;
+  box-shadow: 0 15px 44px rgba(28, 51, 91, 0.115);
+  border: 1px solid rgba(78, 109, 179, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-contador::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(93, 150, 255, 0.14), transparent 45%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.panel-contador:hover {
+  box-shadow: 0 22px 60px rgba(26, 51, 95, 0.19);
+}
+
+.panel-contador * {
+  position: relative;
+  z-index: 1;
+}
+
+.panel-contador .titulo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a3055;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.panel-contador .contador-display {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.panel-contador .numero {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #4178df;
+  display: block;
+  line-height: 1;
+}
+
+.panel-contador .descripcion {
+  font-size: 0.95rem;
+  color: #5d759d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.panel-contador .acciones {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.panel-contador .acciones button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-contador .acciones .btn-primary {
+  background: linear-gradient(125deg, #4178df 0%, #40abff 100%);
+  color: #fff;
+}
+
+.panel-contador .acciones .btn-primary:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(65, 120, 223, 0.3);
+}
+
+.panel-contador .acciones .btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.panel-contador .acciones .btn-secondary:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .panel-contador {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .panel-contador .titulo {
+    font-size: 1.6rem;
+  }
+
+  .panel-contador .numero {
+    font-size: 3rem;
+  }
+
+  .panel-contador .acciones {
+    gap: 8px;
+  }
+
+  .panel-contador .acciones button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}

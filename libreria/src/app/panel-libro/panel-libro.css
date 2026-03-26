@@ -1,0 +1,115 @@
+/* PANEL LIBRO */
+.panel-libro {
+  background: linear-gradient(185deg, #ffffff 0%, #f1f6ff 100%);
+  border-radius: 20px;
+  padding: 28px;
+  width: 92vw;
+  box-shadow: 0 15px 44px rgba(28, 51, 91, 0.115);
+  border: 1px solid rgba(78, 109, 179, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-libro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(93, 150, 255, 0.14), transparent 45%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.panel-libro:hover {
+  box-shadow: 0 22px 60px rgba(26, 51, 95, 0.19);
+}
+
+.panel-libro * {
+  position: relative;
+  z-index: 1;
+}
+
+.panel-libro .titulo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a3055;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.panel-libro .autor {
+  font-size: 1.1rem;
+  color: #526c99;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.panel-libro .descripcion {
+  font-size: 0.95rem;
+  color: #5d759d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.panel-libro .acciones {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.panel-libro .acciones button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel-libro .acciones .btn-primary {
+  background: linear-gradient(125deg, #4178df 0%, #40abff 100%);
+  color: #fff;
+}
+
+.panel-libro .acciones .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(65, 120, 223, 0.3);
+}
+
+.panel-libro .acciones .btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.panel-libro .acciones .btn-secondary:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.msj-disponibilidad {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .panel-libro {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .panel-libro .titulo {
+    font-size: 1.6rem;
+  }
+
+  .panel-libro .acciones {
+    flex-direction: column;
+  }
+
+  .panel-libro .acciones button {
+    width: 100%;
+  }
+}

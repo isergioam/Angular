@@ -1,0 +1,14 @@
+<div class="panel-contador">
+    <h2 class="titulo">Contador Interactivo</h2>
+    <div class="contador-display">
+        <span class="numero">{{ contador }}</span>
+    </div>
+    <p class="descripcion">
+        Usa los botones para incrementar o decrementar el contador.
+    </p>
+    <div class="acciones">
+        <button class="btn-primary" (click)="incrementar()">+</button>
+        <button class="btn-secondary" (click)="decrementar()">-</button>
+        <button class="btn-primarys" (click)="resetear()">0</button>
+    </div>
+</div>
