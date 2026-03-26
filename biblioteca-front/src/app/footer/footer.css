@@ -1,0 +1,12 @@
+.contenedor {
+  background: #1d30d8;
+  height: 15vw;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+p {
+    color: #fff;
+    font-size: 18px;
+}

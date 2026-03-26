@@ -1,26 +1,18 @@
-.contenedor {
-  background: #d81d1d;
-  height: 25vw;
-  padding: 10px;
-  /*border:1pxsolid #ccc;*/
-  /*border-radius:10px;*/
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
 .contenedor2 {
-  background: #ffd900;
-  height: 35vw;
+  background: #fff;
+  height: 55vw;
   padding: 10px;
-  /*border:1pxsolid #ccc;*/
-  /*border-radius:10px;*/
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
 h1,
-h2 {
-  color: #1d4ed8;
+h2,
+p,
+ul {
+  color: #000;
+  font-family: fantasy;
+  font-size: xxx-large;
 }
 
 ul {
