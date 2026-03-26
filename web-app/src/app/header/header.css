@@ -1,0 +1,131 @@
+/* HEADER GENERAL */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background: #162240;
+  backdrop-filter: blur(12px);
+  color: #f5f9ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(132, 144, 174, 0.25);
+}
+
+body {
+  margin: 0;
+  padding: 100px 0 0 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at 20% 10%, #e8f0ff, #f0f4ff 45%, #f6f9ff 100%);
+  color: #13203f;
+}
+
+@keyframes headerGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(0,0,0,0.0); }
+  50% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.22); }
+}
+
+header:hover {
+  animation: headerGlow 3.5s ease-in-out infinite;
+}
+
+/* LOGO */
+header .logo {
+  position: relative;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: transparent;
+  -webkit-text-stroke: 1px #d7e1ff;
+  background: linear-gradient(118deg, #5fb2ff, #b9e1ff 65%, #f3f8ff);
+  -webkit-background-clip: text;
+}
+
+/* NAV */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #dbe9ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 10px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(90deg, #00d4ff, #56aaff);
+  transition: 0.25s ease;
+  border-radius: 99px;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  left: 15%;
+  width: 70%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #fff;
+  background: rgba(25, 79, 164, 0.24);
+}
+
+/* BOTÓN CTA */
+.cta {
+  padding: 10px 22px;
+  background: linear-gradient(120deg, #00d4ff, #4bb6ff);
+  border: none;
+  border-radius: 999px;
+  color: #0c1f41;
+  font-weight: 800;
+  box-shadow: 0 10px 22px rgba(47, 170, 255, 0.28);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(56, 184, 255, 0.36);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+}
+
