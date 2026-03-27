@@ -1,0 +1,65 @@
+<div class="caja">
+    <h2>Formulario de Matriculación</h2>
+
+    <form [formGroup]="formularioMatricula" (ngSubmit)="guardarAlumno()">
+        <label for="dni">DNI</label>
+        <input id="dni" type="text" formControlName="dni">
+
+        @if (formularioMatricula.get('dni')?.touched && formularioMatricula.get('dni')?.invalid) {
+        <div class="error">
+            @if (formularioMatricula.get('dni')?.errors?.['required']) {
+            <p>El DNI es obligatorio.</p>
+            }
+            @if (formularioMatricula.get('dni')?.errors?.['minlength'] || formularioMatricula.get('dni')?.errors?.['maxlength']) {
+            <p>El DNI debe tener 9 caracteres.</p>
+            }
+        </div>
+        }
+
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre">
+
+        @if (formularioMatricula.get('nombre')?.touched && formularioMatricula.get('nombre')?.invalid) {
+        <div class="error">
+            @if (formularioMatricula.get('nombre')?.errors?.['required']) {
+            <p>El nombre es obligatorio.</p>
+            }
+            @if (formularioMatricula.get('nombre')?.errors?.['minlength']) {
+            <p>El nombre debe tener al menos 3 caracteres.</p>
+            }
+        </div>
+        }
+
+        <label for="apellidos">Apellidos</label>
+        <input id="apellidos" type="text" formControlName="apellidos">
+
+        @if (formularioMatricula.get('apellidos')?.touched && formularioMatricula.get('apellidos')?.invalid) {
+        <div class="error">
+            @if (formularioMatricula.get('apellidos')?.errors?.['required']) {
+            <p>Los apellidos son obligatorios.</p>
+            }
+            @if (formularioMatricula.get('apellidos')?.errors?.['minlength']) {
+            <p>Los apellidos deben tener al menos 3 caracteres.</p>
+            }
+        </div>
+        }
+
+        <label for="curso">Curso</label>
+        <input id="curso" type="text" formControlName="curso">
+
+        @if (formularioMatricula.get('curso')?.touched && formularioMatricula.get('curso')?.invalid) {
+        <div class="error">
+            @if (formularioMatricula.get('curso')?.errors?.['required']) {
+            <p>El curso es obligatorio.</p>
+            }
+            @if (formularioMatricula.get('curso')?.errors?.['minlength']) {
+            <p>El curso debe tener al menos 10 caracteres.</p>
+            }
+        </div>
+        }
+
+        <button type="submit" [disabled]="formularioMatricula.invalid">
+            Guardar alumno
+        </button>
+    </form>
+</div>

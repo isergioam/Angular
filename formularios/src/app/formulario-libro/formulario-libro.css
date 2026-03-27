@@ -1,0 +1,32 @@
+.caja {
+  padding:20px;
+  border:1pxsolid #cbd5e1;
+  border-radius:8px;
+  background-color: #f8fafc;
+  max-width:500px;
+}
+
+label {
+  display:block;
+  margin-top:12px;
+  font-weight:bold;
+}
+
+input {
+  display:block;
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+}
+
+button {
+  margin-top:16px;
+  padding:10px16px;
+}
+
+pre {
+  margin-top:20px;
+  background-color: #e2e8f0;
+  padding:10px;
+  border-radius:6px;
+}

@@ -1,0 +1,46 @@
+<div class="caja">
+  <h2>Formulario de libro con validación</h2>
+
+  <form [formGroup]="formularioLibro" (ngSubmit)="guardarLibro()">
+    <label for="titulo">Título</label>
+    <input id="titulo" type="text" formControlName="titulo">
+
+    @if (formularioLibro.get('titulo')?.touched && formularioLibro.get('titulo')?.invalid) {
+      <div class="error">
+        @if (formularioLibro.get('titulo')?.errors?.['required']) {
+          <p>El título es obligatorio.</p>
+        }
+        @if (formularioLibro.get('titulo')?.errors?.['minlength']) {
+          <p>El título debe tener al menos 3 caracteres.</p>
+        }
+      </div>
+    }
+
+    <label for="autor">Autor</label>
+    <input id="autor" type="text" formControlName="autor">
+
+    @if (formularioLibro.get('autor')?.touched && formularioLibro.get('autor')?.errors?.['required']) {
+      <div class="error">
+        <p>El autor es obligatorio.</p>
+      </div>
+    }
+
+    <label for="paginas">Páginas</label>
+    <input id="paginas" type="number" formControlName="paginas">
+
+    @if (formularioLibro.get('paginas')?.touched && formularioLibro.get('paginas')?.invalid) {
+      <div class="error">
+        @if (formularioLibro.get('paginas')?.errors?.['required']) {
+          <p>Las páginas son obligatorias.</p>
+        }
+        @if (formularioLibro.get('paginas')?.errors?.['min']) {
+          <p>Las páginas deben ser 1 o más.</p>
+        }
+      </div>
+    }
+
+    <button type="submit" [disabled]="formularioLibro.invalid">
+      Guardar libro
+    </button>
+  </form>
+</div>

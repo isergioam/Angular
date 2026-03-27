@@ -1,0 +1,8 @@
+<div class="caja">
+  <h2>Color favorito</h2>
+
+  <label for="color">Escribe tu color favorito:</label>
+  <input id="color" type="text" [formControl]="colorFavorito">
+
+  <p>Valor actual: {{ colorFavorito.value }}</p>
+</div>

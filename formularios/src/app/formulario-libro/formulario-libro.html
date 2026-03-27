@@ -1,0 +1,22 @@
+<div class="caja">
+  <h2>Formulario de libro</h2>
+
+  <form [formGroup]="formularioLibro" (ngSubmit)="guardarLibro()">
+    <label for="titulo">Título</label>
+    <input id="titulo" type="text" formControlName="titulo">
+
+    <label for="autor">Autor</label>
+    <input id="autor" type="text" formControlName="autor">
+
+    <label for="paginas">Páginas</label>
+    <input id="paginas" type="number" formControlName="paginas">
+
+    <button type="button" (click)="mostrarDatos()">Mostrar datos</button>
+    <br>
+    <button type="submit">Guardar libro</button>
+
+  </form>
+
+  <h3>Valor actual del formulario</h3>
+  <pre>{{ formularioLibro.value | json }}</pre>
+</div>
