@@ -1,0 +1,53 @@
+<div class="caja">
+    <h2>Formulario de contacto</h2>
+
+    <form [formGroup]="formularioContacto" (ngSubmit)="guardarContacto()">
+        <label for="nombre">Nombre: </label>
+        <input id="nombre" type="text" formControlName="nombre">
+
+        @if (formularioContacto.get('nombre')?.touched && formularioContacto.get('nombre')?.invalid) {
+        <div class="error">
+            @if (formularioContacto.get('nombre')?.errors?.['required']) {
+            <p>El nombre es obligatorio.</p>
+            }
+            @if (formularioContacto.get('nombre')?.errors?.['minlength']) {
+            <p>El nombre debe tener al menos 3 caracteres.</p>
+            }
+        </div>
+        }
+        <br>
+        <label for="email">Email: </label>
+        <input id="email" type="email" formControlName="email">
+
+        @if (formularioContacto.get('email')?.touched && formularioContacto.get('email')?.errors?.['required']) {
+        <div class="error">
+            <p>El email es obligatorio.</p>
+        </div>
+        }
+        <br>
+
+        <label for="telefono">Teléfono: </label>
+        <input id="telefono" type="text" formControlName="telefono">
+
+        @if (formularioContacto.get('telefono')?.touched && formularioContacto.get('telefono')?.errors?.['required']) {
+        <div class="error">
+            <p>El teléfono es obligatorio.</p>
+        </div>
+        }
+        <br>
+        <label for="paginas">Mensaje: </label>
+        <input id="paginas" type="text" formControlName="paginas">
+
+        @if (formularioContacto.get('paginas')?.touched && formularioContacto.get('paginas')?.invalid) {
+        <div class="error">
+            @if (formularioContacto.get('paginas')?.errors?.['required']) {
+            <p>El comentario es obligatorio.</p>
+            }
+        </div>
+        }
+        <br>
+        <button type="submit" [disabled]="formularioContacto.invalid">
+            Enviar
+        </button>
+    </form>
+</div>

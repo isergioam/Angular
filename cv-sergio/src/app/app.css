@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 130px; /* Espacio para el header fijo + nav */
+  padding-bottom: 60px; /* Espacio para el footer fijo */
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #ecf0f1;
+}
+
+nav {
+  background-color: #34495e;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  z-index: 999;
+}
+
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 15px 25px;
+  border-right: 1px solid #2c3e50;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: block;
+  font-size: 15px;
+}
+
+nav a:last-child {
+  border-right: none;
+}
+
+nav a:hover {
+  background-color: #2c3e50;
+  color: #3498db;
+}
+
+nav a.active {
+  background-color: #3498db;
+  color: white;
+  border-bottom: 3px solid #2980b9;
+}
+
+/* Contenedor principal para el contenido */
+router-outlet + *,
+app-inicio,
+app-formacion,
+app-experiencia,
+app-habilidades,
+app-formulario {
+  display: block;
+  min-height: calc(100vh - 190px); /* Altura mínima para llenar pantalla */
+  padding: 20px;
+}

@@ -1,0 +1,10 @@
+<div class="caja">
+  <h2>Formación</h2>
+
+  @for (formacion of formaciones; track formacion.id) {
+    <span>{{ formacion.nombre }}</span><br>
+    <span>{{ formacion.Anno }}</span><br>
+    <span>{{ formacion.Centro }}</span><br><br>
+  }
+  
+</div>

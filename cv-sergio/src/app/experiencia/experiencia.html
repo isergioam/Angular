@@ -1,0 +1,10 @@
+<div class="caja">
+  <h2>Formación</h2>
+
+  @for (exp of experiencias; track exp.id) {
+    <span>{{ exp.puesto }}</span><br>
+    <span>{{ exp.empresa }}</span><br>
+    <span>{{ exp.tiempo }}</span>
+  }
+  
+</div>
