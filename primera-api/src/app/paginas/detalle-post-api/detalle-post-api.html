@@ -1,0 +1,13 @@
+<div class="caja">
+  <h2>Detalle de post</h2>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  } @else if (post) {
+    <p><strong>ID:</strong> {{ post.id }}</p>
+    <p><strong>Título:</strong> {{ post.title }}</p>
+    <p><strong>Contenido:</strong> {{ post.body }}</p>
+  } @else {
+    <p>Cargando detalle...</p>
+  }
+</div>

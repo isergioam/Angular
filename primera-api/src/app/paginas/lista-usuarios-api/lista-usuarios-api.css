@@ -1,0 +1,16 @@
+.caja {
+  padding: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #f8fafc;
+}
+
+.fila {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.error {
+  color: crimson;
+  font-weight: bold;
+}

@@ -1,0 +1,11 @@
+<div class="caja">
+  <h2>Imagen aleatoria de perro</h2>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  } @else if (imagen) {
+    <img [src]="imagen" alt="Perro aleatorio" width="300">
+  } @else {
+    <p>Cargando imagen...</p>
+  }
+</div>

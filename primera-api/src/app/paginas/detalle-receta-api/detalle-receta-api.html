@@ -1,0 +1,43 @@
+<div class="caja">
+  <h2>recetas desde API pública</h2>
+
+  @if (cargando) {
+    <p>Cargando recetas...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else {
+    @for (recetas of receta; track recetas.idMeal) {
+      <div class="fila">
+        <div class="columna">
+          <h3>{{ recetas.strMeal }}</h3>
+          <p><strong>Categoria:</strong> {{ recetas.strCategory }}</p>
+          <p><strong>Area:</strong> {{ recetas.strArea }}</p>
+          <img src="{{ recetas.strMealThumb }}" alt="{{ recetas.strMeal }}" class="imagen">
+        </div>
+        <div class="columna">
+          <p><strong>Ingredientes:</strong></p>
+          <ul>
+            @for (i of ingredientes; track i.nombre) {
+             
+                <li>{{ i.nombre }} - {{ i.cant }}</li>
+            
+            }
+          </ul>
+          <p><strong>Instrucciones:</strong></p>
+          <p class="instrucciones">{{ recetas.strInstructions }}</p>
+          @if (recetas.strYoutube) {
+            <p><strong>Video:</strong></p>
+            <div class="video-responsive">
+              <iframe [src]="cambiarUrlYoutube(recetas.strYoutube)" frameborder="0" allowfullscreen></iframe>
+            </div>
+          }
+        </div>
+
+
+
+      </div>
+    } @empty {
+      <p>No hay recetas para mostrar.</p>
+    }
+  }
+</div>

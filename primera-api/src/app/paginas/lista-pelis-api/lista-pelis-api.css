@@ -1,0 +1,37 @@
+/* Estilo inspirado en Studio Ghibli: tonos naturales, verdes bosque y azules suaves */
+.caja {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: none;
+  border-radius: 16px;
+  background-color: #f4f7f4; /* Blanco roto ligeramente verdoso/crema */
+  box-shadow: 0 10px 25px rgba(60, 80, 60, 0.15); /* Sombra suave verdosa */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c4c3b; /* Verde bosque oscuro para el texto */
+}
+
+.fila {
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 6px solid #82a896; /* Acento verde Ghibli (hojas/naturaleza) */
+}
+
+.fila:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(60, 80, 60, 0.12);
+  border-left-color: #5b8c74; /* Verde más intenso al pasar el cursor */
+}
+
+.error {
+  color: #c05c5c; /* Rojo teja suave, menos agresivo que crimson */
+  background-color: #fde8e8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}

@@ -1,0 +1,128 @@
+/* Estilos generales del contenedor principal */
+.caja {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título principal de la sección */
+h2 {
+  text-align: center;
+  color: #d96704; /* Un tono naranja cálido y apetitoso */
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+/* Título de la receta */
+h3 {
+  font-size: 2.2rem;
+  color: #2c3e50; /* Un color oscuro y sobrio */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Layout de la receta en dos columnas */
+.fila {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas pasen a una fila en pantallas pequeñas */
+  gap: 2.5rem; /* Espacio entre las columnas */
+}
+
+.columna {
+  flex: 1;
+  min-width: 320px; /* Ancho mínimo para que no se aplasten antes de apilarse */
+}
+
+/* Estilo de la imagen de la receta */
+.imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  object-fit: cover;
+}
+
+/* Estilo de la lista de ingredientes */
+.columna ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.columna li {
+  background-color: #fff;
+  margin-bottom: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border-left: 5px solid #f39c12; /* Un acento de color amarillo/naranja */
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+}
+
+.columna li:hover {
+  transform: translateX(5px);
+}
+
+/* Estilo para las etiquetas (Categoría, Area, etc.) */
+p > strong {
+  color: #555;
+}
+
+/* Estilo para el párrafo de instrucciones */
+.instrucciones {
+  line-height: 1.7;
+  white-space: pre-wrap; /* Mantiene los saltos de línea del texto de la API */
+  text-align: justify;
+}
+
+/* Contenedor responsive para el video de YouTube */
+.video-responsive {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* Proporción 16:9 para el video */
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Estilo para el mensaje de error */
+.error {
+  color: #c0392b;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #f2dede;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Media Query para hacer el diseño adaptable a móviles */
+@media (max-width: 768px) {
+  .caja {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+}

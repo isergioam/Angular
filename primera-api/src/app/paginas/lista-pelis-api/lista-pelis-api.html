@@ -1,0 +1,19 @@
+<div class="caja">
+  <h2>pelis desde API pública</h2>
+
+  @if (cargando) {
+    <p>Cargando pelis...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else {
+    @for (peli of pelis; track peli.id) {
+      <div class="fila">
+        <p><strong>{{ peli.title }}</strong></p>
+        <img src="{{peli.movie_banner}}" [alt]="peli.title" width="300" height="150">
+        <p>{{ peli.description }}</p>
+      </div>
+    } @empty {
+      <p>No hay pelis para mostrar.</p>
+    }
+  }
+</div>

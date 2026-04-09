@@ -1,0 +1,19 @@
+<div class="caja">
+  <h2>Usuarios desde API pública</h2>
+
+  @if (cargando) {
+    <p>Cargando usuarios...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else {
+    @for (usuario of usuarios; track usuario.id) {
+      <div class="fila">
+        <p><strong>{{ usuario.name }}</strong></p>
+        <p>{{ usuario.email }}</p>
+        <p>{{ usuario.phone }}</p>
+      </div>
+    } @empty {
+      <p>No hay usuarios para mostrar.</p>
+    }
+  }
+</div>
