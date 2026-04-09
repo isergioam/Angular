@@ -1,0 +1,69 @@
+<div class="caja">
+  <h2>Nuevo post</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="guardarPost()">
+    <label for="title">Título</label>
+    <input id="title" type="text" formControlName="title">
+
+    @if (formulario.get('title')?.touched && formulario.get('title')?.invalid) {
+      <div class="error">
+        @if (formulario.get('title')?.errors?.['required']) {
+          <p>El título es obligatorio.</p>
+        }
+        @if (formulario.get('title')?.errors?.['minlength']) {
+          <p>El título debe tener al menos 3 caracteres.</p>
+        }
+      </div>
+    }
+
+    <label for="body">Contenido</label>
+    <textarea id="body" rows="5" formControlName="body"></textarea>
+
+    @if (formulario.get('body')?.touched && formulario.get('body')?.invalid) {
+      <div class="error">
+        @if (formulario.get('body')?.errors?.['required']) {
+          <p>El contenido es obligatorio.</p>
+        }
+        @if (formulario.get('body')?.errors?.['minlength']) {
+          <p>El contenido debe tener al menos 10 caracteres.</p>
+        }
+      </div>
+    }
+
+    <label for="userId">Id de usuario</label>
+    <input id="userId" type="number" formControlName="userId">
+
+    @if (formulario.get('userId')?.touched && formulario.get('userId')?.invalid) {
+      <div class="error">
+        @if (formulario.get('userId')?.errors?.['required']) {
+          <p>El id de usuario es obligatorio.</p>
+        }
+        @if (formulario.get('userId')?.errors?.['min']) {
+          <p>El id de usuario debe ser 1 o mayor.</p>
+        }
+      </div>
+    }
+
+    <button type="submit" [disabled]="formulario.invalid">
+      Crear post
+    </button>
+  </form>
+
+  @if (mensaje) {
+    <p class="ok">{{ mensaje }}</p>
+  }
+
+  @if (error) {
+    <p class="ko">{{ error }}</p>
+  }
+
+  @if (postCreado) {
+    <div class="resultado">
+      <h3>Respuesta recibida</h3>
+      <p><strong>ID:</strong> {{ postCreado.id }}</p>
+      <p><strong>Título:</strong> {{ postCreado.title }}</p>
+      <p><strong>Contenido:</strong> {{ postCreado.body }}</p>
+      <p><strong>Usuario:</strong> {{ postCreado.userId }}</p>
+    </div>
+  }
+</div>
