@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,6 +16,7 @@ import { Post } from '../../models/post';
 })
 export class NuevoPost {
   private postsApiService = inject(PostsApiService);
+  private cdr = inject(ChangeDetectorRef);
 
   mensaje = '';
   error = '';
@@ -42,6 +43,7 @@ export class NuevoPost {
       this.error = 'Revisa los datos del formulario';
       this.mensaje = '';
       this.postCreado = undefined;
+      this.cdr.detectChanges();
       return;
     }
 
@@ -65,11 +67,13 @@ export class NuevoPost {
           body: '',
           userId: 1
         });
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'No se pudo crear el post';
         this.mensaje = '';
         this.postCreado = undefined;
+        this.cdr.detectChanges();
       }
     });
   }
