@@ -1,0 +1,54 @@
+<div class="caja">
+  <h2>Nuevo Usuario</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="guardarUsuario()">
+    <label for="firstName">Nombre</label>
+    <input id="firstName" type="text" formControlName="firstName" />
+
+    @if (formulario.get('firstName')?.touched && formulario.get('firstName')?.invalid) {
+      <div class="error">
+        @if (formulario.get('title')?.errors?.['required']) {
+          <p>El nombre es obligatorio.</p>
+        }
+      </div>
+    }
+
+    <label for="lastName">Apellidos</label>
+    <input id="lastName" type="text" formControlName="lastName" />
+
+    @if (formulario.get('lastName')?.touched && formulario.get('lastName')?.invalid) {
+      <div class="error">
+        @if (formulario.get('lastName')?.errors?.['required']) {
+          <p>El apellido es obligatorio.</p>
+        }
+      </div>
+    }
+
+    <label for="age">Edad</label>
+    <input id="age" type="number" formControlName="age" />
+
+    @if (formulario.get('age')?.touched && formulario.get('age')?.invalid) {
+      <div class="error">
+        @if (formulario.get('age')?.errors?.['age']) {
+          <p>La edad es obligatoria.</p>
+        }
+      </div>
+    }
+
+    <button type="submit" [disabled]="formulario.invalid">Crear post</button>
+  </form>
+
+  @if (error) {
+    <p class="ko">{{ error }}</p>
+  }
+
+  @if (usuarioCreado) {
+    <div class="resultado">
+      <h3>Respuesta recibida</h3>
+      <p><strong>Nombre:</strong> {{ usuarioCreado.firstName }}</p>
+      <p><strong>Apellidos:</strong> {{ usuarioCreado.lastName }}</p>
+      <p><strong>Edad:</strong> {{ usuarioCreado.age }}</p>
+      <p><strong>ID:</strong> {{ usuarioCreado.id }}</p>
+    </div>
+  }
+</div>
