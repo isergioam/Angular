@@ -1,0 +1,124 @@
+.detalle-receta {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
+  align-items: start;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.bloque-imagen {
+  background-color: #fff;
+}
+
+.imagen-principal {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.bloque-contenido h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.etiqueta-general {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.etiqueta-general span {
+  background-color: #f2ebe9;
+  color: #6f5044;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.datos-rapidos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  background-color: #fcfbfa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #eaddd7;
+}
+
+.bloque-lista {
+  margin-bottom: 2rem;
+}
+
+.bloque-lista h3 {
+  margin-bottom: 1rem;
+  color: #3a2a24;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #eaddd7;
+  padding-bottom: 0.5rem;
+}
+
+.bloque-lista ul,
+.bloque-lista ol {
+  padding-left: 1.3rem;
+  color: #5a4a44;
+  line-height: 1.7;
+}
+
+.bloque-lista li {
+  margin-bottom: 0.75rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.acciones a {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f5efeb;
+  color: #6f5044;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.acciones a:hover {
+  background-color: #6f5044;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.mensaje-info {
+  background-color: #f5efeb;
+  color: #6f5044;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.mensaje-error {
+  background-color: #ffecec;
+  color: #9b1c1c;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .detalle-receta {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+}

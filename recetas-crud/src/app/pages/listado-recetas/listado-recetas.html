@@ -1,0 +1,47 @@
+<section>
+  <header class="cabecera-listado">
+    <div>
+      <h2>Listado de recetas</h2>
+      <p class="subtexto">Total de recetas disponibles: {{ total }}</p>
+    </div>
+
+    <button type="button" class="boton-recargar" (click)="cargarRecetas()">Recargar</button>
+  </header>
+
+  @if (cargando) {
+    <p class="mensaje-error">{{ error }}</p>
+  }
+
+  @if (!error) {
+    <div class="rejilla-recetas">
+      @for (recipe of recipes; track recipe.id) {
+        <article class="tarjeta">
+          <img [src]="recipe.image" [alt]="recipe.name" class="imagen-receta" />
+
+          <div class="contenido-tarjeta">
+            <h3>{{ recipe.name }}</h3>
+
+            <div class="valoracion">
+              @for (i of [1, 2, 3, 4, 5]; track i) {
+                <span class="estrella" [class.llena]="recipe.rating >= i">&#9733;</span>
+              }
+              <span class="rating-texto">{{ recipe.rating }}</span>
+            </div>
+
+            <div class="meta-info">
+              <span>{{ recipe.cuisine }}</span>
+              <span>{{ recipe.difficulty }}</span>
+              <span>{{ recipe.servings }} raciones</span>
+            </div>
+            
+            <div class="acciones">
+              <a [routerLink]="['/recetas', recipe.id]">Ver detalle</a>
+              <a [routerLink]="['/editar', recipe.id]">Editar</a>
+              <a [routerLink]="['/borrar', recipe.id]">Borrar</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,93 @@
+<p>
+  <a routerLink="/recetas">← Volver al listado</a>
+</p>
+<section>
+  <h2>Crear receta</h2>
+  <p class="subtexto">Completa el formulario para enviar una nueva receta a la API.</p>
+  @if (mensajeExito) {
+  <p class="mensaje-exito">{{ mensajeExito }}</p>
+  <div *ngIf="mensajeExito" class="acciones-exito">
+    <a routerLink="/recetas">Ir al listado</a>
+  </div>
+  }
+  @if (mensajeError) {
+  <p class="mensaje-error">{{ mensajeError }}</p>
+  }
+
+  <form [formGroup]="formReceta" (ngSubmit)="guardarReceta()" class="formulario">
+    <div class="campo">
+      <label for="name">Nombre de la receta</label>
+      <input id="name" type="text" formControlName="name" />
+      @if (campoNoValido('name')) {
+      <small> El nombre es obligatorio y debe tener al menos 3 caracteres. </small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="cuisine">Cocina</label>
+      <input id="cuisine" type="text" formControlName="cuisine" />
+
+      @if (campoNoValido('cuisine')) {
+      <small> El campo es obligatorio. </small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="difficulty">Dificultad</label>
+      <select id="difficulty" formControlName="difficulty">
+        <option value="">Selecciona una opción</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+
+      @if (campoNoValido('difficulty')) {
+      <small> La dificultad es obligatoria </small>
+      }
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="prepTimeMinutes">Preparación (min)</label>
+        <input id="prepTimeMinutes" type="number" formControlName="prepTimeMinutes" />
+
+        @if (campoNoValido('prepTimeMinutes')) {
+        <small> el tiempo es obligatorio </small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="cookTimeMinutes">Cocinado (min)</label>
+        <input id="cookTimeMinutes" type="number" formControlName="cookTimeMinutes" />
+
+        @if (campoNoValido('cookTimeMinutes')) {
+        <small> El tiempo es obligatorio </small>
+        }
+
+        <div class="campo">
+          <label for="servings">Raciones</label>
+          <input id="servings" type="number" formControlName="servings" />
+
+          @if (campoNoValido('servings')) {
+          <small> Las raciones som obligatorias </small>
+          }
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="image">URL de la imagen</label>
+        <input id="image" type="text" formControlName="image" />
+
+        @if (campoNoValido('image')) {
+        <small> La imagen es obligatorias </small>
+        }
+      </div>
+
+      <div class="acciones">
+        <button type="submit" [disabled]="enviando">
+          {{ enviando ? 'Guardando...' : 'Guardar receta' }}
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

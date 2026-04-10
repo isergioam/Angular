@@ -1,0 +1,92 @@
+<section>
+  <p>
+    <a routerLink="/recetas">← Volver al listado</a>
+  </p>
+
+  <h2>Editar receta</h2>
+  <p class="subtexto">Modifica los datos de la receta seleccionada y guarda los cambios.</p>
+  @if (cargando) {
+    <p class="mensaje-info">Cargando datos de la receta...</p>
+  }
+  @if (mensajeExito) {
+    <p class="mensaje-info">Cargando datos de la receta...</p>
+  }
+
+  @if (mensajeError) {
+    <p class="mensaje-error">{{ mensajeError }}</p>
+  }
+
+  <form [formGroup]="formReceta" (ngSubmit)="guardarCambios()" class="formulario">
+    <div class="campo">
+      <label for="name">Nombre de la receta</label>
+      <input id="name" type="text" formControlName="name" />
+
+      @if (campoNoValido('name')) {
+        <small> El nombre es obligatorio y debe tener al menos 3 caracteres. </small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="cuisine">Cocina</label>
+      <input id="cuisine" type="text" formControlName="cuisine" />
+
+      @if (campoNoValido('name')) {
+        <small> La cocina es obligatoria y debe tener al menos 3 caracteres. </small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="difficulty">Dificultad</label>
+      <select id="difficulty" formControlName="difficulty">
+        <option value="">Selecciona una opción</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+
+      @if (campoNoValido('difficulty')) {
+        <small> Debes seleccionar una dificultad. </small>
+      }
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="prepTimeMinutes">Preparación (min)</label>
+        <input id="prepTimeMinutes" type="number" formControlName="prepTimeMinutes" />
+        @if (campoNoValido('prepTimeMinutes')) {
+          <small> Debes ser un número mayor de 0 </small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="cookTimeMinutes">Cocinado (min)</label>
+        <input id="cookTimeMinutes" type="number" formControlName="cookTimeMinutes" />
+        @if (campoNoValido('cookTimeMinutes')) {
+          <small> Debes ser un número mayor de 0 </small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="servings">Raciones</label>
+        <input id="servings" type="number" formControlName="servings" />
+        @if (campoNoValido('servings')) {
+          <small> Debes ser un número mayor de 0 </small>
+        }
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="image">URL de la imagen</label>
+      <input id="image" type="text" formControlName="image" />
+      @if (campoNoValido('image')) {
+        <small> Debes ser una url válida </small>
+      }
+    </div>
+
+    <div class="acciones">
+      <button type="submit" [disabled]="enviando">
+        {{ enviando ? 'Guardando cambios...' : 'Guardar cambios' }}
+      </button>
+    </div>
+  </form>
+</section>

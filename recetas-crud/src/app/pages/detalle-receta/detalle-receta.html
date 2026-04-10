@@ -1,0 +1,72 @@
+<section>
+  <p>
+    <a routerLink="/recetas">← Volver al listado</a>
+  </p>
+  @if (cargando) {
+    <p class="mensaje-info">Cargando detalle de la receta...</p>
+  }
+
+  @if (error) {
+    <p class="mensaje-error">{{ error }}</p>
+  }
+
+  @if (!cargando && !error) {
+    <article class="detalle-receta">
+      <div class="bloque-imagen">
+        <img [src]="recipe?.image" [alt]="recipe?.name" class="imagen-principal" />
+      </div>
+
+      <div class="bloque-contenido">
+        <h2>{{ recipe?.name }}</h2>
+
+        <p class="etiqueta-general">
+          <span>{{ recipe?.cuisine }}</span>
+          <span>{{ recipe?.difficulty }}</span>
+          <span>{{ recipe?.mealType?.join(', ') }}</span>
+        </p>
+
+        <div class="datos-rapidos">
+          <p><strong>Tiempo de preparación:</strong> {{ recipe?.prepTimeMinutes }} min</p>
+          <p><strong>Tiempo de cocinado:</strong> {{ recipe?.cookTimeMinutes }} min</p>
+          <p><strong>Raciones:</strong> {{ recipe?.servings }}</p>
+          <p><strong>Calorías por ración:</strong> {{ recipe?.caloriesPerServing }}</p>
+          <p><strong>Valoración:</strong> {{ recipe?.rating }}</p>
+          <p><strong>Número de reseñas:</strong> {{ recipe?.reviewCount }}</p>
+        </div>
+
+        <section class="bloque-lista">
+          <h3>Ingredientes</h3>
+          <ul>
+            @for (ingredient of recipe?.ingredients; track ingredient) {
+              <li>
+                {{ ingredient }}
+              </li>
+            }
+          </ul>
+        </section>
+
+        <section class="bloque-lista">
+          <h3>Instrucciones</h3>
+          <ol>
+            @for (step of recipe?.instructions; track step) {
+              <li>
+                {{ step }}
+              </li>
+            }
+          </ol>
+        </section>
+        @if (recipe?.tags?.length) {
+          <section class="bloque-lista">
+            <h3>Etiquetas</h3>
+            <p>{{ recipe?.tags?.join(', ') }}</p>
+          </section>
+        }
+
+        <div class="acciones">
+          <a [routerLink]="['/editar', recipe?.id]">Editar receta</a>
+          <a [routerLink]="['/borrar', recipe?.id]">Borrar receta</a>
+        </div>
+      </div>
+    </article>
+  }
+</section>

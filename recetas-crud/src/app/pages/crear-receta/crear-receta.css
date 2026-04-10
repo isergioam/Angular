@@ -1,0 +1,88 @@
+.subtexto {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.campo label {
+  font-weight: bold;
+}
+
+.campo input,
+.campo select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.campo small {
+  color: #b42318;
+}
+
+.acciones {
+  display: flex;
+  gap: 1rem;
+}
+
+.acciones button {
+  border: none;
+  background-color: #2f6fed;
+  color: white;
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.acciones button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.mensaje-exito {
+  background-color: #ecfdf3;
+  color: #027a48;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.mensaje-error {
+  background-color: #ffecec;
+  color: #9b1c1c;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.acciones-exito {
+  margin-bottom: 1rem;
+}
+
+.acciones-exito a {
+  text-decoration: none;
+  color: #1d4ed8;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  .fila {
+    grid-template-columns: 1fr;
+  }
+}

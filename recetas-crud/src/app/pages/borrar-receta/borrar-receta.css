@@ -1,0 +1,91 @@
+.panel-borrado {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.imagen-receta {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.bloque-contenido h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.aviso-peligro {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #fff4e5;
+  color: #7a4b00;
+  border: 1px solid #ffd8a8;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+.boton-borrar {
+  border: none;
+  background-color: #c62828;
+  color: white;
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.boton-borrar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.acciones a,
+.acciones-finales a {
+  text-decoration: none;
+  color: #2f6fed;
+  font-weight: bold;
+}
+
+.acciones-finales {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mensaje-info {
+  background-color: #eef4ff;
+  color: #204080;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.mensaje-exito {
+  background-color: #ecfdf3;
+  color: #027a48;
+  padding: 1.2rem;
+  border-radius: 8px;
+}
+
+.mensaje-error {
+  background-color: #ffecec;
+  color: #9b1c1c;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 800px) {
+  .panel-borrado {
+    grid-template-columns: 1fr;
+  }
+}

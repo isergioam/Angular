@@ -1,0 +1,48 @@
+<section>
+  <p>
+    <a routerLink="/recetas">← Volver al listado</a>
+  </p>
+
+  <h2>Borrar receta</h2>
+
+  <p *ngIf="cargando" class="mensaje-info">Cargando datos de la receta...</p>
+  <p *ngIf="mensajeError" class="mensaje-error">{{ mensajeError }}</p>
+
+  <div *ngIf="borradoExitoso" class="mensaje-exito">
+    <h3>Receta borrada correctamente</h3>
+    <p>La operación de borrado se ha ejecutado con éxito.</p>
+
+    <div class="acciones-finales">
+      <a routerLink="/recetas">Volver al listado</a>
+      <a routerLink="/crear">Crear una nueva receta</a>
+    </div>
+  </div>
+
+  <article *ngIf="!cargando && !mensajeError && recipe && !borradoExitoso" class="panel-borrado">
+    <div class="bloque-imagen">
+      <img [src]="recipe.image" [alt]="recipe.name" class="imagen-receta">
+    </div>
+
+    <div class="bloque-contenido">
+      <h3>{{ recipe.name }}</h3>
+
+      <p><strong>Cocina:</strong> {{ recipe.cuisine }}</p>
+      <p><strong>Dificultad:</strong> {{ recipe.difficulty }}</p>
+      <p><strong>Raciones:</strong> {{ recipe.servings }}</p>
+      <p><strong>Tiempo total:</strong> {{ recipe.prepTimeMinutes + recipe.cookTimeMinutes }} min</p>
+
+      <div class="aviso-peligro">
+        <p><strong>Atención:</strong> esta acción está pensada como definitiva.</p>
+        <p>Confirma solo si realmente quieres borrar esta receta.</p>
+      </div>
+
+      <div class="acciones">
+        <button type="button" class="boton-borrar" [disabled]="borrando" (click)="confirmarBorrado()">
+          {{ borrando ? 'Borrando...' : 'Sí, borrar receta' }}
+        </button>
+
+        <a *ngIf="recipeId !== null" [routerLink]="['/recetas', recipeId]">Cancelar y volver al detalle</a>
+      </div>
+    </div>
+  </article>
+</section>

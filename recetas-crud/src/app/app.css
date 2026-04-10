@@ -1,0 +1,95 @@
+:host {
+  display: block;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef3fb 100%);
+  color: #1f2937;
+}
+
+.contenedor {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.cabecera-app {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+  color: white;
+  padding: 2rem 0 1.2rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.cabecera-interna h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitulo {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  opacity: 0.92;
+}
+
+.barra-navegacion {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dbe3f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-principal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color: #1d4ed8;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-principal a:hover {
+  background-color: #e8f0ff;
+  transform: translateY(-1px);
+}
+
+.menu-principal a.activo {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+.contenido-principal {
+  padding: 2rem 0;
+}
+
+.contenido-principal > * {
+  display: block;
+  background-color: white;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.pie-app {
+  padding: 1rem 0 2rem;
+  color: #4b5563;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .cabecera-interna h1 {
+    font-size: 1.7rem;
+  }
+
+  .menu-principal {
+    justify-content: center;
+  }
+}
