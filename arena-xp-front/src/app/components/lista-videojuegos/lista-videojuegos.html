@@ -1,6 +1,87 @@
 <section class="contenedor">
   <h1>Arena XP</h1>
-  <p class="subtitulo">Listado de videojuegos</p>
+  <p class="subtitulo">
+    @if (videojuegoEditandoId !== null) {
+      Editando videojuego
+    } @else {
+      Listado y alta de videojuegos
+    }
+  </p>
+
+  <form [formGroup]="formularioVideojuego" (ngSubmit)="guardarVideojuego()" class="formulario">
+    <div class="campo">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" formControlName="titulo" />
+      @if (formularioVideojuego.get('titulo')?.touched && formularioVideojuego.get('titulo')?.invalid) {
+        <p class="error">El título es obligatorio y debe tener al menos 2 caracteres.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="plataforma">Plataforma</label>
+      <input id="plataforma" type="text" formControlName="plataforma" />
+      @if (formularioVideojuego.get('plataforma')?.touched && formularioVideojuego.get('plataforma')?.invalid) {
+        <p class="error">La plataforma es obligatoria.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="genero">Género</label>
+      <input id="genero" type="text" formControlName="genero" />
+      @if (formularioVideojuego.get('genero')?.touched && formularioVideojuego.get('genero')?.invalid) {
+        <p class="error">El género es obligatorio.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="estado">Estado</label>
+      <select id="estado" formControlName="estado">
+        <option value="">Selecciona un estado</option>
+        <option value="PENDIENTE">Pendiente</option>
+        <option value="JUGANDO">Jugando</option>
+        <option value="COMPLETADO">Completado</option>
+        <option value="ABANDONADO">Abandonado</option>
+      </select>
+      @if (formularioVideojuego.get('estado')?.touched && formularioVideojuego.get('estado')?.invalid) {
+        <p class="error">El estado es obligatorio.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="puntuacion">Puntuación</label>
+      <input id="puntuacion" type="number" formControlName="puntuacion" />
+    </div>
+
+    <div class="campo">
+      <label for="horasJugadas">Horas jugadas</label>
+      <input id="horasJugadas" type="number" formControlName="horasJugadas" />
+    </div>
+
+    <div class="campo-checkbox">
+      <label>
+        <input type="checkbox" formControlName="favorito" />
+        Favorito
+      </label>
+    </div>
+
+    <div class="acciones-formulario">
+      <button type="submit">
+        @if (videojuegoEditandoId !== null) {
+          Guardar cambios
+        } @else {
+          Guardar videojuego
+        }
+      </button>
+
+      @if (videojuegoEditandoId !== null) {
+        <button type="button" class="boton-secundario" (click)="limpiarFormulario()">
+          Cancelar edición
+        </button>
+      }
+    </div>
+  </form>
+
+  <hr />
 
   @if (videojuegos.length === 0) {
     <p>No hay videojuegos disponibles.</p>
@@ -16,6 +97,16 @@
         <p><strong>Puntuación:</strong> {{ videojuego.puntuacion }}</p>
         <p><strong>Horas jugadas:</strong> {{ videojuego.horasJugadas }}</p>
         <p><strong>Favorito:</strong> {{ videojuego.favorito ? 'Sí' : 'No' }}</p>
+
+        <div class="acciones-tarjeta">
+          <button type="button" class="boton-editar" (click)="editarVideojuego(videojuego)">
+            Editar
+          </button>
+
+          <button type="button" class="boton-borrar" (click)="borrarVideojuego(videojuego)">
+            Borrar
+          </button>
+        </div>
       </article>
     }
   </div>
