@@ -1,0 +1,22 @@
+<section class="contenedor">
+  <h1>Arena XP</h1>
+  <p class="subtitulo">Listado de videojuegos</p>
+
+  @if (videojuegos.length === 0) {
+    <p>No hay videojuegos disponibles.</p>
+  }
+
+  <div class="grid-videojuegos">
+    @for (videojuego of videojuegos; track videojuego.id) {
+      <article class="tarjeta-videojuego">
+        <h2>{{ videojuego.titulo }}</h2>
+        <p><strong>Plataforma:</strong> {{ videojuego.plataforma }}</p>
+        <p><strong>Género:</strong> {{ videojuego.genero }}</p>
+        <p><strong>Estado:</strong> {{ videojuego.estado }}</p>
+        <p><strong>Puntuación:</strong> {{ videojuego.puntuacion }}</p>
+        <p><strong>Horas jugadas:</strong> {{ videojuego.horasJugadas }}</p>
+        <p><strong>Favorito:</strong> {{ videojuego.favorito ? 'Sí' : 'No' }}</p>
+      </article>
+    }
+  </div>
+</section>
