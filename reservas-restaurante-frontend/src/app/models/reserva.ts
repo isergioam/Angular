@@ -1,0 +1,10 @@
+export interface Reserva {
+  id: number;
+  nombreCliente: string;
+  telefono: string;
+  fechaReserva: string;
+  horaReserva: string;
+  numeroPersonas: number;
+  numeroMesa: number;
+  observaciones: string;
+}
