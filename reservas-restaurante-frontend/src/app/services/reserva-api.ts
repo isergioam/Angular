@@ -13,4 +13,8 @@ export class ReservaApi {
   getReservas(): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(this.apiUrl);
   }
+
+  crearReserva(reserva: Reserva): Observable<Reserva> {
+    return this.http.post<Reserva>(this.apiUrl, reserva);
+  }
 }

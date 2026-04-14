@@ -1,0 +1,19 @@
+      .contenedor {
+          padding: 24px;
+          font-family: Arial, sans-serif;
+      }
+
+      .menu {
+          display: flex;
+          gap: 16px;
+          margin-top: 20px;
+          flex-wrap: wrap;
+      }
+
+      a {
+          text-decoration: none;
+          padding: 10px 14px;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #333;
+      }

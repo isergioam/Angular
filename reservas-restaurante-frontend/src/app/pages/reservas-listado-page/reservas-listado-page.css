@@ -1,0 +1,34 @@
+.contenedor {
+        padding: 24px;
+        font-family: Arial, sans-serif;
+      }
+
+      .acciones-superiores {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+      }
+
+      th,
+      td {
+        border: 1px solid #cccccc;
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+
+      a {
+        text-decoration: none;
+        color: #0056b3;
+      }

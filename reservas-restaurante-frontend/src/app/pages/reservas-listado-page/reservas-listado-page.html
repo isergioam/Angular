@@ -1,1 +1,45 @@
-<p>reservas-listado-page works!</p>
+<section class="contenedor">
+      <h1>Listado de reservas</h1>
+
+      <div class="acciones-superiores">
+        <a routerLink="/">Volver al inicio</a>
+        <a routerLink="/reservas/nueva">Crear reserva</a>
+      </div>
+
+      <table *ngIf="reservas.length > 0; else sinDatos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Teléfono</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Personas</th>
+            <th>Mesa</th>
+            <th>Observaciones</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservas">
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.nombreCliente }}</td>
+            <td>{{ reserva.telefono }}</td>
+            <td>{{ reserva.fechaReserva }}</td>
+            <td>{{ reserva.horaReserva }}</td>
+            <td>{{ reserva.numeroPersonas }}</td>
+            <td>Mesa {{ reserva.numeroMesa }}</td>
+            <td> {{ (reserva.observaciones) ? reserva.observaciones : 'Sin observaciones'   }} </td>
+            <td>
+              <a [routerLink]="['/reservas/editar', reserva.id]">Editar</a>
+              |
+              <a [routerLink]="['/reservas/borrar', reserva.id]">Borrar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #sinDatos>
+        <p>No hay reservas registradas.</p>
+      </ng-template>
+    </section>
