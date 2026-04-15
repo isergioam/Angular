@@ -1,0 +1,43 @@
+.contenedor {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 24px;
+        font-family: Arial, sans-serif;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .campo {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      .acciones {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      button,
+      a {
+        padding: 10px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: 1px solid #333;
+        background: white;
+        color: #333;
+        cursor: pointer;
+      }

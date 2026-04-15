@@ -17,4 +17,17 @@ export class ReservaApi {
   crearReserva(reserva: Reserva): Observable<Reserva> {
     return this.http.post<Reserva>(this.apiUrl, reserva);
   }
+
+  getReservaPorId(id: number): Observable<Reserva> {
+    return this.http.get<Reserva>(`${this.apiUrl}/${id}`);
+  }
+
+  actualizarReserva(id: number, reserva: Reserva): Observable<Reserva> {
+    return this.http.put<Reserva>(`${this.apiUrl}/${id}`, reserva);
+  }
+
+  borrarReserva(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
+  }
+
 }

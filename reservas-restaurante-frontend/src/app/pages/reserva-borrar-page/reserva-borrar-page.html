@@ -1,1 +1,31 @@
-<p>reserva-borrar-page works!</p>
+<section class="contenedor">
+    <h1>Borrar reserva {{ idReserva }}</h1>
+
+    @if (reserva === null) {
+    <p class="mensaje-error">No se ha encontrado la reserva.</p>
+
+    } @else if (reserva) {
+    <div class="tarjeta-confirmacion">
+        <p><strong>¿Seguro que quieres borrar esta reserva?</strong></p>
+
+        <ul>
+            <li><strong>ID:</strong> {{ reserva.id }}</li>
+            <li><strong>Cliente:</strong> {{ reserva.nombreCliente }}</li>
+            <li><strong>Teléfono:</strong> {{ reserva.telefono }}</li>
+            <li><strong>Fecha:</strong> {{ reserva.fechaReserva }}</li>
+            <li><strong>Hora:</strong> {{ reserva.horaReserva }}</li>
+            <li><strong>Personas:</strong> {{ reserva.numeroPersonas }}</li>
+            <li><strong>Mesa:</strong> {{ reserva.numeroMesa }}</li>
+            <li><strong>Observaciones:</strong> {{ reserva.observaciones || 'Sin observaciones' }}</li>
+        </ul>
+
+        <div class="acciones">
+            <button type="button" (click)="confirmarBorrado()">Sí, borrar reserva</button>
+            <a routerLink="/reservas">Cancelar</a>
+        </div>
+    </div>
+
+    } @else {
+    <p>Cargando reserva...</p>
+    }
+</section>
