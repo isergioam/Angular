@@ -1,0 +1,23 @@
+<h2>Categorías</h2>
+
+@if (cargando) {
+  <p>Cargando categorías...</p>
+}
+
+@if (error) {
+  <p>{{ error }}</p>
+}
+
+@if (!cargando && categorias.length > 0) {
+  <ul>
+    @for (categoria of categorias; track categoria.id) {
+      <li>
+        {{ categoria.id }} - {{ categoria.nombre }}
+      </li>
+    }
+  </ul>
+}
+
+@if (!cargando && categorias.length === 0) {
+  <p>No hay categorías registradas.</p>
+}
