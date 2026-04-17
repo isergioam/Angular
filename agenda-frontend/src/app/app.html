@@ -1,7 +1,15 @@
-<h1>Agenda</h1>
-<nav>
-  <a routerLink="/categorias">Categorías</a> |
-  <a routerLink="/contactos">Contactos</a>
-</nav>
-<hr>
-<router-outlet></router-outlet>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Agenda</h1>
+    <p>Gestión de contactos, categorías y favoritos</p>
+  </header>
+
+  <nav class="app-nav">
+    <a routerLink="/categorias" routerLinkActive="activo">Categorías</a>
+    <a routerLink="/contactos" routerLinkActive="activo">Contactos</a>
+  </nav>
+
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

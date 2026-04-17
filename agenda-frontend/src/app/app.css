@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app-header {
+  background: #f5f7fb;
+  border: 1px solid #d9e1ec;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.4rem;
+}
+
+.app-header p {
+  margin: 0;
+  color: #555;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.app-nav a {
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: #eef3f8;
+  color: #1f2d3d;
+  font-weight: 600;
+}
+
+.app-nav a.activo {
+  background: #dbeafe;
+}
+
+.app-main {
+  min-height: 400px;
+}

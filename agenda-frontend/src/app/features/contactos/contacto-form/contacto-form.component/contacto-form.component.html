@@ -1,0 +1,85 @@
+<h3>
+  {{ contactoEditar ? 'Editar contacto' : 'Nuevo contacto' }}
+</h3>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+<section class="panel">
+  <h3>Datos principales</h3>
+  <div>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" type="text" formControlName="nombre">
+  </div>
+</section>
+
+  @if (form.get('nombre')?.touched && form.get('nombre')?.hasError('required')) {
+    <p>El nombre es obligatorio.</p>
+  }
+
+  <div>
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" type="text" formControlName="apellidos">
+  </div>
+
+  @if (form.get('apellidos')?.touched && form.get('apellidos')?.hasError('required')) {
+    <p>Los apellidos son obligatorios.</p>
+  }
+
+  <div>
+    <label>
+      <input type="checkbox" formControlName="favorito">
+      Favorito
+    </label>
+  </div>
+
+  <div>
+    <label for="categoriaId">Categoría</label>
+    <select id="categoriaId" formControlName="categoriaId">
+      <option [ngValue]="null">Seleccione una categoría</option>
+      @for (categoria of categorias; track categoria.id) {
+        <option [ngValue]="categoria.id">{{ categoria.nombre }}</option>
+      }
+    </select>
+  </div>
+
+  @if (form.get('categoriaId')?.touched && form.get('categoriaId')?.hasError('required')) {
+    <p>La categoría es obligatoria.</p>
+  }
+
+  <h4>Teléfonos</h4>
+  <div formArrayName="telefonos">
+    @for (telefono of telefonos.controls; track $index) {
+      <div [formGroupName]="$index">
+        <input type="text" formControlName="numero" placeholder="Número">
+        <input type="text" formControlName="tipo" placeholder="Tipo">
+        <button type="button" (click)="eliminarTelefono($index)">Eliminar</button>
+      </div>
+    }
+  </div>
+
+  <button type="button" (click)="agregarTelefono()">Añadir teléfono</button>
+
+  <h4>Emails</h4>
+  <div formArrayName="emails">
+    @for (email of emails.controls; track $index) {
+      <div [formGroupName]="$index">
+        <input type="email" formControlName="direccion" placeholder="Email">
+        <input type="text" formControlName="tipo" placeholder="Tipo">
+        <button type="button" (click)="eliminarEmail($index)">Eliminar</button>
+      </div>
+    }
+  </div>
+
+  <button type="button" (click)="agregarEmail()">Añadir email</button>
+
+  @if (error) {
+    <p>{{ error }}</p>
+  }
+
+  <button type="submit" [disabled]="guardando">
+    {{ guardando ? 'Guardando...' : (contactoEditar ? 'Actualizar contacto' : 'Guardar contacto') }}
+  </button>
+
+  @if (contactoEditar) {
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  }
+</form>

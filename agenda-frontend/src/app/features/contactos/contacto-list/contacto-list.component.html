@@ -1,0 +1,65 @@
+<app-contacto-form
+  [contactoEditar]="contactoEnEdicion"
+  (contactoGuardado)="recargarTrasGuardar()"
+  (cancelarEdicion)="cancelarEdicion()">
+</app-contacto-form>
+
+<hr>
+
+<h2>Filtros de contactos</h2>
+
+<div>
+  <input
+    type="text"
+    [(ngModel)]="textoBusqueda"
+    placeholder="Buscar por nombre o apellidos">
+
+  <select [(ngModel)]="categoriaSeleccionada">
+    <option [ngValue]="null">Todas las categorías</option>
+    @for (categoria of categorias; track categoria.id) {
+      <option [ngValue]="categoria.id">{{ categoria.nombre }}</option>
+    }
+  </select>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="soloFavoritos">
+    Solo favoritos
+  </label>
+
+  <button type="button" (click)="buscar()">Buscar</button>
+  <button type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
+</div>
+
+<hr>
+
+<h2>Contactos</h2>
+
+@if (cargando) {
+  <p>Cargando contactos...</p>
+}
+
+@if (error) {
+  <p>{{ error }}</p>
+}
+
+@if (!cargando && contactos.length > 0) {
+  <ul>
+    @for (contacto of contactos; track contacto.id) {
+      <li>
+        <strong>{{ contacto.nombre }} {{ contacto.apellidos }}</strong>
+        - {{ contacto.categoriaNombre }}
+
+        <button type="button" (click)="toggleFavorito(contacto)">
+          {{ contacto.favorito ? '★ Quitar favorito' : '☆ Marcar favorito' }}
+        </button>
+
+        <button type="button" (click)="editar(contacto)">Editar</button>
+        <button type="button" (click)="eliminar(contacto)">Eliminar</button>
+      </li>
+    }
+  </ul>
+}
+
+@if (!cargando && contactos.length === 0) {
+  <p>No hay contactos que cumplan los filtros indicados.</p>
+}

@@ -1,3 +1,11 @@
+<app-categoria-form
+  [categoriaEditar]="categoriaEnEdicion"
+  (categoriaGuardada)="recargarTrasGuardar()"
+  (cancelarEdicion)="cancelarEdicion()">
+</app-categoria-form>
+
+<hr>
+
 <h2>Categorías</h2>
 
 @if (cargando) {
@@ -13,6 +21,8 @@
     @for (categoria of categorias; track categoria.id) {
       <li>
         {{ categoria.id }} - {{ categoria.nombre }}
+        <button type="button" (click)="editar(categoria)">Editar</button>
+        <button type="button" (click)="eliminar(categoria)">Eliminar</button>
       </li>
     }
   </ul>

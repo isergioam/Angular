@@ -1,0 +1,30 @@
+<h3>
+  {{ categoriaEditar ? 'Editar categoría' : 'Nueva categoría' }}
+</h3>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <div>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" type="text" formControlName="nombre">
+  </div>
+
+  @if (form.get('nombre')?.touched && form.get('nombre')?.hasError('required')) {
+    <p>El nombre es obligatorio.</p>
+  }
+
+  @if (form.get('nombre')?.touched && form.get('nombre')?.hasError('maxlength')) {
+    <p>El nombre no puede superar los 100 caracteres.</p>
+  }
+
+  @if (error) {
+    <p>{{ error }}</p>
+  }
+
+  <button type="submit" [disabled]="guardando">
+    {{ guardando ? 'Guardando...' : (categoriaEditar ? 'Actualizar categoría' : 'Guardar categoría') }}
+  </button>
+
+  @if (categoriaEditar) {
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  }
+</form>
