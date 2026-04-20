@@ -1,50 +1,95 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { MesaApi } from '../../services/mesa-api';
 import { ReservaApi } from '../../services/reserva-api';
+import { Mesa } from '../../models/mesa';
 import { Reserva } from '../../models/reserva';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-reserva-crear-page',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './reserva-crear-page.html',
   styleUrl: './reserva-crear-page.css'
 })
 export class ReservaCrearPage {
+  private mesaApi = inject(MesaApi);
   private reservaApi = inject(ReservaApi);
   private router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
+
+  mesasDisponibles: Mesa[] = [];
+  mesaSeleccionadaId = 0;
+  mensajeError = '';
+  mensajeInfo = '';
 
   nuevaReserva: Reserva = {
+    id: 0,
     nombreCliente: '',
     telefono: '',
     fechaReserva: '',
     horaReserva: '',
-    numeroPersonas: 2,
-    numeroMesa: 1,
-    observaciones: ''
+    numeroPersonas: 1,
+    observaciones: '',
+    mesa: {
+      id: 0,
+      numero: 0,
+      capacidad: 0,
+      ubicacion: '',
+      activa: true
+    }
   };
 
-  guardarReserva(): void {
-    if (this.nuevaReserva.numeroPersonas < 2) {
-      alert('El número mínimo de personas es 2');
-      return;
-    } else {
-      this.reservaApi.crearReserva(this.nuevaReserva).subscribe({
+  buscarMesasDisponibles(): void {
+    this.mensajeError = '';
+    this.mensajeInfo = '';
+    this.mesasDisponibles = [];
+    this.mesaSeleccionadaId = 0;
 
-        next: (reservaCreada) => {
-          alert('Reserva creada correctamente');
-          console.log('Reserva creada correctamente', reservaCreada);
-          this.router.navigate(['/reservas']);
-          this.cdr.detectChanges();
-        },
-        error: (error) => {
-          console.error('Error al crear la reserva', error);
-          this.cdr.detectChanges();
-        }
-      });
+    if (!this.nuevaReserva.fechaReserva || !this.nuevaReserva.horaReserva || this.nuevaReserva.numeroPersonas < 1) {
+      this.mensajeInfo = 'Indica fecha, hora y número de personas para consultar la disponibilidad.';
+      return;
     }
+
+    this.mesaApi.getMesasDisponibles(
+      this.nuevaReserva.fechaReserva,
+      this.nuevaReserva.horaReserva,
+      this.nuevaReserva.numeroPersonas
+    ).subscribe({
+      next: (datos) => {
+        this.mesasDisponibles = datos;
+
+        if (datos.length === 0) {
+          this.mensajeInfo = 'No hay mesas disponibles para ese tramo horario y ese número de personas.';
+        }
+      },
+      error: (error) => {
+        console.error('Error al consultar disponibilidad', error);
+        this.mensajeError = 'No se ha podido consultar la disponibilidad de mesas.';
+      }
+    });
+  }
+
+  guardarReserva(): void {
+    this.mensajeError = '';
+
+    const mesaSeleccionada = this.mesasDisponibles.find(mesa => mesa.id === this.mesaSeleccionadaId);
+    if (!mesaSeleccionada) {
+      this.mensajeError = 'Debes seleccionar una mesa disponible.';
+      return;
+    }
+
+    this.nuevaReserva.mesa = mesaSeleccionada;
+
+    this.reservaApi.crearReserva(this.nuevaReserva).subscribe({
+      next: () => {
+        this.router.navigate(['/reservas']);
+      },
+      error: (error) => {
+        console.error('Error al guardar la reserva', error);
+        this.mensajeError = 'No se ha podido guardar la reserva. Es posible que la mesa ya no esté disponible.';
+      }
+    });
   }
 }

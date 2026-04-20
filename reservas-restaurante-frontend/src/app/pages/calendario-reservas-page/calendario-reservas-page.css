@@ -1,0 +1,82 @@
+.panel {
+  background: white;
+  border: 1px solid #d9e2f1;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.cabecera-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cabecera-panel h1 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.cabecera-panel button {
+  padding: 10px 14px;
+  border: 1px solid #cfd8ea;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+}
+
+.dias-semana,
+.grid-calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.dias-semana {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #475467;
+}
+
+.celda-dia {
+  min-height: 100px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.celda-dia.fuera {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.numero-dia {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.badge-reservas {
+  display: inline-block;
+  background: #e8eefc;
+  color: #1f3c88;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detalle-dia {
+  margin-top: 28px;
+}
+
+.reserva-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}

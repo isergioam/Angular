@@ -1,0 +1,106 @@
+.panel {
+  background: white;
+  border: 1px solid #d9e2f1;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.cabecera-panel {
+  margin-bottom: 24px;
+}
+
+.cabecera-panel h1 {
+  margin: 0;
+}
+
+.cabecera-panel p {
+  margin-top: 8px;
+  color: #5b6474;
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+input,
+button {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d7dfec;
+}
+
+button {
+  background: #1f3c88;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mensaje {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.grid-mesas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.mesa-card {
+  border-radius: 16px;
+  padding: 18px;
+  border: 2px solid transparent;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.mesa-card.libre {
+  background: #ecfdf3;
+  border-color: #6ce9a6;
+}
+
+.mesa-card.ocupada {
+  background: #fff1f3;
+  border-color: #fda4af;
+}
+
+.mesa-card.inactiva {
+  background: #f5f5f5;
+  border-color: #d0d5dd;
+}
+
+.mesa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mesa-header h2 {
+  margin: 0;
+}
+
+.estado {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.detalle-reserva {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}

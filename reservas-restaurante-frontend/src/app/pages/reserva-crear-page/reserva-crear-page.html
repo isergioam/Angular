@@ -1,49 +1,65 @@
-<section class="contenedor">
-    <h1>Crear reserva</h1>
+<section class="panel">
+  <div class="cabecera-panel">
+    <div>
+      <h1>Nueva reserva</h1>
+      <p>Consulta la disponibilidad real antes de asignar la mesa.</p>
+    </div>
+  </div>
 
-    <form (ngSubmit)="guardarReserva()" #formulario="ngForm">
-        <div class="campo">
-            <label for="nombreCliente">Nombre del cliente</label>
-            <input type="text" id="nombreCliente" name="nombreCliente" [(ngModel)]="nuevaReserva.nombreCliente"
-                required />
-        </div>
+  <form (ngSubmit)="guardarReserva()">
+    <div class="grid-formulario">
+      <div class="campo">
+        <label for="nombreCliente">Nombre del cliente</label>
+        <input type="text" id="nombreCliente" name="nombreCliente" [(ngModel)]="nuevaReserva.nombreCliente" required />
+      </div>
 
-        <div class="campo">
-            <label for="telefono">Teléfono</label>
-            <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevaReserva.telefono" required />
-        </div>
+      <div class="campo">
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevaReserva.telefono" required />
+      </div>
 
-        <div class="campo">
-            <label for="fechaReserva">Fecha de la reserva</label>
-            <input type="date" id="fechaReserva" name="fechaReserva" [(ngModel)]="nuevaReserva.fechaReserva" required />
-        </div>
+      <div class="campo">
+        <label for="fechaReserva">Fecha</label>
+        <input type="date" id="fechaReserva" name="fechaReserva" [(ngModel)]="nuevaReserva.fechaReserva" required />
+      </div>
 
-        <div class="campo">
-            <label for="horaReserva">Hora de la reserva</label>
-            <input type="time" id="horaReserva" name="horaReserva" [(ngModel)]="nuevaReserva.horaReserva" required />
-        </div>
+      <div class="campo">
+        <label for="horaReserva">Hora</label>
+        <input type="time" id="horaReserva" name="horaReserva" [(ngModel)]="nuevaReserva.horaReserva" required />
+      </div>
 
-        <div class="campo">
-            <label for="numeroPersonas">Número de personas</label>
-            <input type="number" id="numeroPersonas" name="numeroPersonas" [(ngModel)]="nuevaReserva.numeroPersonas"
-                required min="2" />
-        </div>
+      <div class="campo">
+        <label for="numeroPersonas">Número de personas</label>
+        <input type="number" id="numeroPersonas" name="numeroPersonas" [(ngModel)]="nuevaReserva.numeroPersonas" required min="1" />
+      </div>
 
-        <div class="campo">
-            <label for="numeroMesa">Número de mesa</label>
-            <input type="number" id="numeroMesa" name="numeroMesa" [(ngModel)]="nuevaReserva.numeroMesa" required
-                min="1" />
-        </div>
+      <div class="campo accion-busqueda">
+        <label>&nbsp;</label>
+        <button type="button" class="btn btn-secundario" (click)="buscarMesasDisponibles()">Buscar mesas disponibles</button>
+      </div>
+    </div>
 
-        <div class="campo">
-            <label for="observaciones">Observaciones</label>
-            <textarea id="observaciones" name="observaciones" [(ngModel)]="nuevaReserva.observaciones"
-                rows="4" placeholder="Ejemplo: cumpleaños, alergias, mesa interior..."></textarea>
-        </div>
+    <div class="campo campo-completo">
+      <label for="mesa">Mesa disponible</label>
+      <select id="mesa" name="mesa" [(ngModel)]="mesaSeleccionadaId" [disabled]="mesasDisponibles.length === 0" required>
+        <option [ngValue]="0">Selecciona una mesa</option>
+        <option *ngFor="let mesa of mesasDisponibles" [ngValue]="mesa.id">
+          Mesa {{ mesa.numero }} · {{ mesa.capacidad }} personas · {{ mesa.ubicacion }}
+        </option>
+      </select>
+    </div>
 
-        <div class="acciones">
-            <button type="submit">Guardar reserva</button>
-            <a routerLink="/reservas">Cancelar</a>
-        </div>
-    </form>
+    <div class="campo campo-completo">
+      <label for="observaciones">Observaciones</label>
+      <textarea id="observaciones" name="observaciones" [(ngModel)]="nuevaReserva.observaciones" rows="4"></textarea>
+    </div>
+
+    <p class="mensaje-info" *ngIf="mensajeInfo">{{ mensajeInfo }}</p>
+    <p class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</p>
+
+    <div class="acciones">
+      <button type="submit" class="btn btn-primario">Guardar reserva</button>
+      <a routerLink="/reservas" class="btn btn-secundario">Cancelar</a>
+    </div>
+  </form>
 </section>

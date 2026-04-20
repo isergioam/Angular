@@ -1,0 +1,46 @@
+<section class="panel">
+  <div class="cabecera-panel">
+    <button type="button" (click)="mesAnterior()">←</button>
+    <h1>Calendario de reservas · {{ obtenerTituloMes() }}</h1>
+    <button type="button" (click)="mesSiguiente()">→</button>
+  </div>
+
+  <div class="dias-semana">
+    <div>Lun</div>
+    <div>Mar</div>
+    <div>Mié</div>
+    <div>Jue</div>
+    <div>Vie</div>
+    <div>Sáb</div>
+    <div>Dom</div>
+  </div>
+
+  <div class="grid-calendario">
+    <div
+      class="celda-dia"
+      *ngFor="let dia of diasCalendario"
+      [class.fuera]="dia.fueraDeMes"
+      (click)="seleccionarDia(dia)">
+      <div class="numero-dia" *ngIf="!dia.fueraDeMes">{{ dia.numero }}</div>
+      <div class="badge-reservas" *ngIf="dia.reservas.length > 0">
+        {{ dia.reservas.length }} reserva(s)
+      </div>
+    </div>
+  </div>
+
+  <div class="detalle-dia" *ngIf="fechaSeleccionada">
+    <h2>Reservas del día {{ fechaSeleccionada }}</h2>
+
+    <div *ngIf="reservasDelDia.length > 0; else sinReservas">
+      <div class="reserva-card" *ngFor="let reserva of reservasDelDia">
+        <strong>{{ reserva.horaReserva }}</strong>
+        <p>{{ reserva.nombreCliente }} · {{ reserva.numeroPersonas }} personas</p>
+        <p>Mesa {{ reserva.mesa.numero }} · {{ reserva.mesa.ubicacion }}</p>
+      </div>
+    </div>
+
+    <ng-template #sinReservas>
+      <p>No hay reservas para ese día.</p>
+    </ng-template>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+	<section class="panel">
+  <div class="cabecera-panel">
+    <div>
+      <h1>Panel visual de mesas</h1>
+      <p>Consulta en tiempo real el estado de la sala para un tramo horario concreto.</p>
+    </div>
+  </div>
+
+  <div class="filtros">
+    <div class="campo">
+      <label for="fecha">Fecha</label>
+      <input type="date" id="fecha" [(ngModel)]="fecha" />
+    </div>
+
+    <div class="campo">
+      <label for="hora">Hora</label>
+      <input type="time" id="hora" [(ngModel)]="hora" />
+    </div>
+
+    <div class="campo campo-boton">
+      <label>&nbsp;</label>
+      <button type="button" (click)="consultarEstado()">Consultar estado</button>
+    </div>
+  </div>
+
+  <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+
+  <div class="grid-mesas" *ngIf="mesas.length > 0">
+    <article
+      class="mesa-card"
+      *ngFor="let mesa of mesas"
+      [class.libre]="mesa.activa && !mesa.ocupada"
+      [class.ocupada]="mesa.ocupada"
+      [class.inactiva]="!mesa.activa">
+
+      <div class="mesa-header">
+        <h2>Mesa {{ mesa.numeroMesa }}</h2>
+        <span class="estado">
+          {{ !mesa.activa ? 'Inactiva' : mesa.ocupada ? 'Ocupada' : 'Libre' }}
+        </span>
+      </div>
+
+      <p><strong>Capacidad:</strong> {{ mesa.capacidad }} personas</p>
+      <p><strong>Ubicación:</strong> {{ mesa.ubicacion }}</p>
+
+      <div *ngIf="mesa.ocupada" class="detalle-reserva">
+        <p><strong>Cliente:</strong> {{ mesa.nombreCliente }}</p>
+        <p><strong>Hora:</strong> {{ mesa.horaReserva }}</p>
+        <p><strong>Comensales:</strong> {{ mesa.numeroPersonas }}</p>
+      </div>
+    </article>
+  </div>
+</section>

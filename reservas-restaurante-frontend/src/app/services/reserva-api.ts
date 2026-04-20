@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reserva } from '../models/reserva';
 
@@ -14,12 +14,25 @@ export class ReservaApi {
     return this.http.get<Reserva[]>(this.apiUrl);
   }
 
-  crearReserva(reserva: Reserva): Observable<Reserva> {
-    return this.http.post<Reserva>(this.apiUrl, reserva);
+  getReservasPorFecha(fecha: string): Observable<Reserva[]> {
+    const params = new HttpParams().set('fecha', fecha);
+    return this.http.get<Reserva[]>(`${this.apiUrl}/por-fecha`, { params });
+  }
+
+  getReservasEntreFechas(inicio: string, fin: string): Observable<Reserva[]> {
+    const params = new HttpParams()
+      .set('inicio', inicio)
+      .set('fin', fin);
+
+    return this.http.get<Reserva[]>(`${this.apiUrl}/entre-fechas`, { params });
   }
 
   getReservaPorId(id: number): Observable<Reserva> {
     return this.http.get<Reserva>(`${this.apiUrl}/${id}`);
+  }
+
+  crearReserva(reserva: Reserva): Observable<Reserva> {
+    return this.http.post<Reserva>(this.apiUrl, reserva);
   }
 
   actualizarReserva(id: number, reserva: Reserva): Observable<Reserva> {
@@ -29,5 +42,4 @@ export class ReservaApi {
   borrarReserva(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
   }
-
 }

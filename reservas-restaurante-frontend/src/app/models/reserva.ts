@@ -1,3 +1,5 @@
+import { Mesa } from './mesa';
+
 export interface Reserva {
   id?: number;
   nombreCliente: string;
@@ -5,6 +7,6 @@ export interface Reserva {
   fechaReserva: string;
   horaReserva: string;
   numeroPersonas: number;
-  numeroMesa: number;
   observaciones: string;
+  mesa: Mesa;
 }
